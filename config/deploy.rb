@@ -11,6 +11,7 @@ require './config/slack'
 set :wp_user, "yourname" # The admin username
 set :wp_email, "yourname@example.com" # The admin email address
 set :wp_sitename, "WP Deploy" # The site title
+set :wp_pass, "YoUrPaSsWoRd" # Please change this to a better password
 set :wp_localurl, "http://wpdeploy" # Your local environment URL
 
 ############################################
