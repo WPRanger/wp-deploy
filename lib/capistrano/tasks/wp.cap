@@ -2,8 +2,8 @@ namespace :wp do
 
   task :set_permissions do
     on roles(:app) do
-      execute :chmod, "666 #{shared_path}/.htaccess"
-      execute :chmod, "-R 777 #{shared_path}/content/uploads"
+      execute :chmod, "664 #{shared_path}/.htaccess"
+      execute :chmod, "-R 775 #{shared_path}/content/uploads"
     end
   end
 
@@ -40,19 +40,20 @@ namespace :wp do
               
         within release_path do
         
-          if !fetch(:setup_all)
-            # Generate a random password
-            o = [('a'..'z'), ('A'..'Z')].map { |i| i.to_a }.flatten
-            password = (0...18).map { o[rand(o.length)] }.join
-          else
-            password = fetch(:wp_pass)
-          end
+          #if !fetch(:setup_all)
+            ## Generate a random password
+            #o = [('a'..'z'), ('A'..'Z')].map { |i| i.to_a }.flatten
+            #password = (0...18).map { o[rand(o.length)] }.join
+          #else
+            #password = fetch(:wp_pass)
+          #end
 
           # Get WP details from config in /config
           wp_siteurl = fetch(:stage_url)
           title = fetch(:wp_sitename)
           email = fetch(:wp_email)
           user = fetch(:wp_user)
+          password = fetch(:wp_pass)
 
           # Install WordPress
           execute :wp, "core install --url='#{wp_siteurl}' --title='#{title}' --admin_user='#{user}' --admin_password='#{password}' --admin_email='#{email}'"
