@@ -72,6 +72,7 @@ First off, you need to set your global WP settings under the "WordPress" heading
 set :wp_user, "aaronthomas" # The admin username
 set :wp_email, "aaron@example.com" # The admin email address
 set :wp_sitename, "WP Deploy" # The site title
+set :wp_pass, "YourPassword"
 set :wp_localurl, "http://localhost" # Your local environment URL
 ```
 
